@@ -10,8 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherSearchViewController" customModule="BoldWeatherApp" customModuleProvider="target">
             <connections>
-                <outlet property="activityIndicatorView" destination="3im-KX-xiI" id="TaX-Ya-m8n"/>
-                <outlet property="loadingView" destination="AKD-FP-gPx" id="jrP-fg-V2P"/>
                 <outlet property="searchBar" destination="UqO-T6-uOZ" id="zNm-yh-cNq"/>
                 <outlet property="searchCollectionView" destination="zgp-Fh-4jc" id="qHa-rs-pEb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -39,33 +37,16 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKD-FP-gPx">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3im-KX-xiI">
-                            <rect key="frame" x="197" y="399" width="20" height="20"/>
-                        </activityIndicatorView>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="3im-KX-xiI" firstAttribute="centerY" secondItem="AKD-FP-gPx" secondAttribute="centerY" id="fFQ-k7-uqU"/>
-                        <constraint firstItem="3im-KX-xiI" firstAttribute="centerX" secondItem="AKD-FP-gPx" secondAttribute="centerX" id="iWf-ny-yrx"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="UqO-T6-uOZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="24f-sS-8gw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zgp-Fh-4jc" secondAttribute="trailing" id="2sU-hv-BES"/>
-                <constraint firstItem="AKD-FP-gPx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="85V-tG-k4P"/>
                 <constraint firstItem="UqO-T6-uOZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HgD-Uy-eVE"/>
                 <constraint firstItem="UqO-T6-uOZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="KTa-Ns-8QF"/>
                 <constraint firstItem="zgp-Fh-4jc" firstAttribute="top" secondItem="UqO-T6-uOZ" secondAttribute="bottom" constant="8" id="PIE-MW-VML"/>
-                <constraint firstItem="AKD-FP-gPx" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Vk6-4a-8em"/>
-                <constraint firstAttribute="bottom" secondItem="AKD-FP-gPx" secondAttribute="bottom" constant="34" id="crD-dO-xku"/>
                 <constraint firstItem="zgp-Fh-4jc" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="jFu-Z1-61b"/>
-                <constraint firstItem="AKD-FP-gPx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="sAo-Yb-Fvb"/>
                 <constraint firstItem="zgp-Fh-4jc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zxG-yj-Guz"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="96.428571428571431"/>

@@ -6,31 +6,86 @@
 //
 
 import XCTest
+import RxSwift
+import Alamofire
 @testable import BoldWeatherApp
 
-class BoldWeatherAppTests: XCTestCase {
+enum DummyWeatherSearchInteractorError: Error {
+    case serverFailure
+}
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+class DummyWeatherSearchInteractor: WeatherSearchInteractorProtocol {
+    func weatherSearchService(text: String) -> Observable<[WeatherPlace]> {
+        return Observable<[WeatherPlace]>.create { observer in
+            let disposables = Disposables.create()
+            
+            let places = [
+                WeatherPlace(title: "London", locationType: "City", woeid: 44418, lattLong: "51.506321,-0.12714")
+            ]
+            
+            observer.onNext(places)
+            observer.onCompleted()
+            
+            return disposables
         }
     }
+    
+    func weatherDescriptionService(woeid: Int) -> Observable<WeatherDescription> {
+        return Observable<WeatherDescription>.create { observer in
+            let disposables = Disposables.create()
+            
+            observer.onError(DummyWeatherSearchInteractorError.serverFailure)
+            observer.onCompleted()
+            
+            return disposables
+        }
+    }
+}
 
+class BoldWeatherAppTests: XCTestCase {
+    
+    private var interactor = DummyWeatherSearchInteractor()
+    private let disposeBag = DisposeBag()
+
+    override func setUp() {
+        super.setUp()
+    }
+    
+    func test_weatherSearchSuccess() {
+        let interactorExpectation: XCTestExpectation = expectation(description: "success")
+        var weatherPlaces: [WeatherPlace] = []
+        
+        interactor
+            .weatherSearchService(text: "London")
+            .subscribe(onNext: { response in
+                
+                weatherPlaces = response
+                interactorExpectation.fulfill()
+            }, onError: { _ in
+                XCTFail("Error in service")
+            }).disposed(by: disposeBag)
+        
+        wait(for: [interactorExpectation], timeout: 5)
+        
+        XCTAssert(weatherPlaces.count > 0)
+    }
+
+    func test_WeatherDescriptionFailure() {
+        let interactorExpectation: XCTestExpectation = expectation(description: "false")
+        var weatherDescription: WeatherDescription?
+        
+        interactor
+            .weatherDescriptionService(woeid: 10000)
+            .subscribe(onNext: { response in
+                
+                weatherDescription = response
+                interactorExpectation.fulfill()
+            }, onError: { _ in
+                interactorExpectation.fulfill()
+            }).disposed(by: disposeBag)
+        
+        wait(for: [interactorExpectation], timeout: 5)
+        
+        XCTAssertNil(weatherDescription)
+    }
 }

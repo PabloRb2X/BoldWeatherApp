@@ -51,6 +51,14 @@
 		CEDB7D232823722200C56285 /* WeatherDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7D1F2823722200C56285 /* WeatherDescriptionViewController.xib */; };
 		CEDB7D262823896200C56285 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D252823896200C56285 /* Extension+UIImageView.swift */; };
 		CEDB7D272823896200C56285 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D252823896200C56285 /* Extension+UIImageView.swift */; };
+		CEDB7D2F282431FE00C56285 /* WeatherNextDayDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D2E282431FE00C56285 /* WeatherNextDayDescriptionCell.swift */; };
+		CEDB7D30282431FE00C56285 /* WeatherNextDayDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D2E282431FE00C56285 /* WeatherNextDayDescriptionCell.swift */; };
+		CEDB7D39282458AF00C56285 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D38282458AF00C56285 /* LoadingView.swift */; };
+		CEDB7D3A282458AF00C56285 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D38282458AF00C56285 /* LoadingView.swift */; };
+		CEDB7D3C282458BD00C56285 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7D3B282458BD00C56285 /* LoadingView.xib */; };
+		CEDB7D3D282458BD00C56285 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7D3B282458BD00C56285 /* LoadingView.xib */; };
+		CEDB7D3F28245A8100C56285 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D3E28245A8100C56285 /* Extension+UIViewController.swift */; };
+		CEDB7D4028245A8100C56285 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7D3E28245A8100C56285 /* Extension+UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +114,10 @@
 		CEDB7D1E2823722200C56285 /* WeatherDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDescriptionViewController.swift; sourceTree = "<group>"; };
 		CEDB7D1F2823722200C56285 /* WeatherDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherDescriptionViewController.xib; sourceTree = "<group>"; };
 		CEDB7D252823896200C56285 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
+		CEDB7D2E282431FE00C56285 /* WeatherNextDayDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNextDayDescriptionCell.swift; sourceTree = "<group>"; };
+		CEDB7D38282458AF00C56285 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CEDB7D3B282458BD00C56285 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		CEDB7D3E28245A8100C56285 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		E4C70CD0F142B70F72ACFE3D /* Pods-BoldWeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoldWeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-BoldWeatherApp/Pods-BoldWeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F0304F35F16F5978EBC82043 /* Pods_BoldWeatherAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoldWeatherAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -290,6 +302,7 @@
 		CEDB7D012823389500C56285 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEDB7D312824585000C56285 /* LoadingView */,
 				CEDB7D242823722C00C56285 /* WeatherDescription */,
 				CEDB7D022823389F00C56285 /* WeatherSearch */,
 			);
@@ -310,6 +323,7 @@
 			children = (
 				CEDB7D042823459800C56285 /* ServiceDefinitions.swift */,
 				CEDB7D252823896200C56285 /* Extension+UIImageView.swift */,
+				CEDB7D3E28245A8100C56285 /* Extension+UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDB7D1E2823722200C56285 /* WeatherDescriptionViewController.swift */,
+				CEDB7D2E282431FE00C56285 /* WeatherNextDayDescriptionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +378,15 @@
 				CEDB7D1F2823722200C56285 /* WeatherDescriptionViewController.xib */,
 			);
 			path = WeatherDescription;
+			sourceTree = "<group>";
+		};
+		CEDB7D312824585000C56285 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				CEDB7D38282458AF00C56285 /* LoadingView.swift */,
+				CEDB7D3B282458BD00C56285 /* LoadingView.xib */,
+			);
+			path = LoadingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,6 +503,7 @@
 				CEDB7CBE28232B9800C56285 /* LaunchScreen.storyboard in Resources */,
 				CEDB7D0B28234EA800C56285 /* WeatherSearchCell.xib in Resources */,
 				CEDB7CED28232FAB00C56285 /* WeatherSearchViewController.xib in Resources */,
+				CEDB7D3C282458BD00C56285 /* LoadingView.xib in Resources */,
 				CEDB7CBB28232B9800C56285 /* Assets.xcassets in Resources */,
 				CEDB7CB928232B9700C56285 /* Main.storyboard in Resources */,
 			);
@@ -489,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEDB7D232823722200C56285 /* WeatherDescriptionViewController.xib in Resources */,
+				CEDB7D3D282458BD00C56285 /* LoadingView.xib in Resources */,
 				CEDB7D0C28234EA800C56285 /* WeatherSearchCell.xib in Resources */,
 				CEDB7CEE28232FAB00C56285 /* WeatherSearchViewController.xib in Resources */,
 			);
@@ -632,14 +658,17 @@
 				CEDB7D192823720200C56285 /* WeatherDescriptionPresenter.swift in Sources */,
 				CEDB7D0928234EA800C56285 /* WeatherSearchCell.swift in Sources */,
 				CEDB7CF92823301500C56285 /* WeatherSearchInteractor.swift in Sources */,
+				CEDB7D39282458AF00C56285 /* LoadingView.swift in Sources */,
 				CEDB7CFF2823304100C56285 /* WeatherSearchModel.swift in Sources */,
 				CEDB7CF32823300000C56285 /* WeatherSearchPresenter.swift in Sources */,
 				CEDB7D16282371F600C56285 /* WeatherDescriptionModule.swift in Sources */,
+				CEDB7D2F282431FE00C56285 /* WeatherNextDayDescriptionCell.swift in Sources */,
 				CEDB7D262823896200C56285 /* Extension+UIImageView.swift in Sources */,
 				CEDB7CFC2823301F00C56285 /* WeatherSearchDataManager.swift in Sources */,
 				CEDB7CB228232B9700C56285 /* AppDelegate.swift in Sources */,
 				CEDB7CF028232FF700C56285 /* WeatherSearchWireframe.swift in Sources */,
 				CEDB7D052823459800C56285 /* ServiceDefinitions.swift in Sources */,
+				CEDB7D3F28245A8100C56285 /* Extension+UIViewController.swift in Sources */,
 				CEDB7CEB28232FAB00C56285 /* WeatherSearchViewController.swift in Sources */,
 				CEDB7D202823722200C56285 /* WeatherDescriptionViewController.swift in Sources */,
 				CEDB7CF62823300B00C56285 /* WeatherSearchModule.swift in Sources */,
@@ -654,14 +683,17 @@
 				CEDB7D1A2823720200C56285 /* WeatherDescriptionPresenter.swift in Sources */,
 				CEDB7D0A28234EA800C56285 /* WeatherSearchCell.swift in Sources */,
 				CEDB7CF128232FF700C56285 /* WeatherSearchWireframe.swift in Sources */,
+				CEDB7D3A282458AF00C56285 /* LoadingView.swift in Sources */,
 				CEDB7CF42823300000C56285 /* WeatherSearchPresenter.swift in Sources */,
 				CEDB7D002823304100C56285 /* WeatherSearchModel.swift in Sources */,
 				CEDB7D17282371F600C56285 /* WeatherDescriptionModule.swift in Sources */,
+				CEDB7D30282431FE00C56285 /* WeatherNextDayDescriptionCell.swift in Sources */,
 				CEDB7D272823896200C56285 /* Extension+UIImageView.swift in Sources */,
 				CEDB7CFD2823301F00C56285 /* WeatherSearchDataManager.swift in Sources */,
 				CEDB7CF72823300B00C56285 /* WeatherSearchModule.swift in Sources */,
 				CEDB7CFA2823301500C56285 /* WeatherSearchInteractor.swift in Sources */,
 				CEDB7D062823459800C56285 /* ServiceDefinitions.swift in Sources */,
+				CEDB7D4028245A8100C56285 /* Extension+UIViewController.swift in Sources */,
 				CEDB7CC928232B9800C56285 /* BoldWeatherAppTests.swift in Sources */,
 				CEDB7D212823722200C56285 /* WeatherDescriptionViewController.swift in Sources */,
 				CEDB7CEC28232FAB00C56285 /* WeatherSearchViewController.swift in Sources */,

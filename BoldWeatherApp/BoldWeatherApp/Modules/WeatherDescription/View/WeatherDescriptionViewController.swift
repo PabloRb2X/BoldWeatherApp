@@ -12,11 +12,13 @@ import RxCocoa
 protocol WeatherDescriptionViewOutput {
     var placeSubject: PublishSubject<String> { get set }
     var weatherTodaySubject: PublishSubject<ConsolidatedWeather> { get set }
+    var weatherNextDaysList: Driver<[ConsolidatedWeather]> { get }
     
     func didLoad()
 }
 
 final class WeatherDescriptionViewController: UIViewController {
+    @IBOutlet private weak var containerView: UIView!
     
     @IBOutlet private weak var placeLabel: UILabel! {
         didSet {
@@ -50,6 +52,12 @@ final class WeatherDescriptionViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var nextDaysCollectionView: UICollectionView! {
+        didSet {
+            nextDaysCollectionView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        }
+    }
+    
     private let presenter: WeatherDescriptionViewOutput
     private let disposeBag = DisposeBag()
 
@@ -78,6 +86,8 @@ private extension WeatherDescriptionViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         
         bindRxComponents()
+        registerNextDaysCollectionView()
+        setupSearchCollectionView()
     }
     
     func bindRxComponents() {
@@ -96,5 +106,34 @@ private extension WeatherDescriptionViewController {
                 self?.stateNameLabel.text = consolidatedWeather.weatherStateName.rawValue
                 self?.minMaxTempLabel.text = "H:\(Double(round(10 * consolidatedWeather.maxTemp) / 10))º L:\(Double(round(10 * consolidatedWeather.minTemp) / 10))º"
             }).disposed(by: disposeBag)
+    }
+    
+    func registerNextDaysCollectionView() {
+        nextDaysCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        nextDaysCollectionView.register(WeatherNextDayDescriptionCell.self, forCellWithReuseIdentifier: "nextDayCell")
+    }
+    
+    func setupSearchCollectionView() {
+        let cellIdentifier = "nextDayCell"
+        let cellType = WeatherNextDayDescriptionCell.self
+        let dataSource = presenter.weatherNextDaysList
+        
+        dataSource
+            .asObservable()
+            .observe(on: MainScheduler.instance)
+            .bind(to: nextDaysCollectionView.rx.items(cellIdentifier: cellIdentifier,
+                                                      cellType: cellType)) { (_, element, cell) in
+                
+                cell.setup(consolidatedWeather: element)
+            }.disposed(by: disposeBag)
+    }
+}
+
+extension WeatherDescriptionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: collectionView.bounds.width, height: 80)
     }
 }

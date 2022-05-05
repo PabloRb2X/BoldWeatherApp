@@ -23,33 +23,8 @@ enum WeatherStateNameType: String, Codable {
     case heavyCloud = "Heavy Cloud"
     case lightCloud = "Light Cloud"
     case clear = "Clear"
-    
-    var imageUrl: String {
-        switch self {
-        case .snow:
-            return getImageUrl(abbreviation: "sn")
-        case .sleet:
-            return getImageUrl(abbreviation: "sl")
-        case .hail:
-            return getImageUrl(abbreviation: "h")
-        case .thunderstorm:
-            return getImageUrl(abbreviation: "t")
-        case .heavyRain:
-            return getImageUrl(abbreviation: "hr")
-        case .lightRain:
-            return getImageUrl(abbreviation: "lr")
-        case .showers:
-            return getImageUrl(abbreviation: "s")
-        case .heavyCloud:
-            return getImageUrl(abbreviation: "hc")
-        case .lightCloud:
-            return getImageUrl(abbreviation: "lc")
-        case .clear:
-            return getImageUrl(abbreviation: "c")
-        }
-    }
-    
-    private func getImageUrl(abbreviation: String) -> String {
+
+    func getImageUrl(abbreviation: String) -> String {
         return "https://www.metaweather.com/static/img/weather/png/64/\(abbreviation).png"
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol WeatherDescriptionPresenterProtocol: WeatherDescriptionViewOutput {
     func showViewController()
@@ -18,6 +19,7 @@ final class WeatherDescriptionPresenter {
     
     var weatherTodaySubject = PublishSubject<ConsolidatedWeather>()
     var placeSubject = PublishSubject<String>()
+    private var weatherNextDaysListSubject = BehaviorSubject<[ConsolidatedWeather]>(value: [])
     
     init(wireframe: WeatherDescriptionWireframe,
          weatherDescription: WeatherDescription) {
@@ -34,14 +36,26 @@ private extension WeatherDescriptionPresenter {
             weatherTodaySubject.onNext(weatherToday)
         }
     }
+    
+    func setupNextDaysContent() {
+        var nextDaysList = weatherDescription.consolidatedWeather
+        nextDaysList.removeFirst()
+        
+        weatherNextDaysListSubject.onNext(nextDaysList)
+    }
 }
 
 extension WeatherDescriptionPresenter: WeatherDescriptionPresenterProtocol {
+    var weatherNextDaysList: Driver<[ConsolidatedWeather]> {
+        weatherNextDaysListSubject.asDriver(onErrorJustReturn: [])
+    }
+    
     func showViewController() {
         wireframe.showViewController(presenter: self)
     }
     
     func didLoad() {
         setupHeaderViewContent()
+        setupNextDaysContent()
     }
 }

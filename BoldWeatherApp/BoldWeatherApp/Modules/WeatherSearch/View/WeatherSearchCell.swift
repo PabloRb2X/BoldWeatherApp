@@ -11,14 +11,12 @@ class WeatherSearchCell: UICollectionViewCell {
     @IBOutlet private weak var titleLabel: UILabel! {
         didSet {
             titleLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-            titleLabel.textColor = .black
         }
     }
     
     @IBOutlet private weak var subtitleLabel: UILabel! {
         didSet {
             subtitleLabel.font = UIFont.systemFont(ofSize: 16.0)
-            subtitleLabel.textColor = .black
         }
     }
     

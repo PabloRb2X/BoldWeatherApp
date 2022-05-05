@@ -33,15 +33,6 @@ class WeatherSearchViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var loadingView: UIView! {
-        didSet {
-            loadingView.isHidden = true
-            loadingView.backgroundColor = UIColor(red: 137/255, green: 137/255, blue: 137/255, alpha: 0.5)
-        }
-    }
-    
-    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
-    
     private let presenter: WeatherSearchViewOutput
     private let disposeBag = DisposeBag()
 
@@ -85,7 +76,7 @@ private extension WeatherSearchViewController {
             .hideLoadingViewPublisher
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
-                self?.hideLoadingView()
+                self?.dismissLoadingView()
             }).disposed(by: disposeBag)
     }
     
@@ -102,20 +93,11 @@ private extension WeatherSearchViewController {
         dataSource
             .asObservable()
             .observe(on: MainScheduler.instance)
-            .bind(to: searchCollectionView.rx.items(cellIdentifier: cellIdentifier, cellType: cellType)) { (row, element, cell) in
+            .bind(to: searchCollectionView.rx.items(cellIdentifier: cellIdentifier,
+                                                    cellType: cellType)) { (_, element, cell) in
                 
                 cell.setup(title: element.title, subtitle: element.locationType)
             }.disposed(by: disposeBag)
-    }
-    
-    func showLoadingView() {
-        loadingView.isHidden = false
-        activityIndicatorView.startAnimating()
-    }
-    
-    func hideLoadingView() {
-        loadingView.isHidden = true
-        activityIndicatorView.stopAnimating()
     }
 }
 
